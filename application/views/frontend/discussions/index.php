@@ -33,9 +33,7 @@
                                         </li> -->
                                         <li>
                                             <p class="number">
-                                            <?php foreach ($answer as $ans): ?>
-                                                    <?php echo $ans->total; ?>
-					                            <?php endforeach ?>
+                                                <?= $answer; ?>
                                             </p>
                                             <span>Suara</span>
                                         </li>

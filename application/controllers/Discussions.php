@@ -11,7 +11,7 @@ class Discussions extends CI_Controller
         $data['menuDiscussions'] = $this->Discussions_model->menuDiscussions();
         $data['discussions'] = $this->db->get('discussion')->result_array();
 
-        $data['answer'] = $this->Discussions_model->totalDataCommentar2();
+        $data['answer'] = $this->Discussions_model->totalDataCommentar();
         
         $this->load->view('frontend/templates/header', $data);
         $this->load->view('frontend/discussions/templates/menu', $data);
