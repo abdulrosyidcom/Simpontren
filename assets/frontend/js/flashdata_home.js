@@ -7,4 +7,3 @@ if (flashDataLogout) {
         type: 'success'
     });
 }
-

@@ -14,7 +14,7 @@
 
                 <div class="flash-datauserupdate" data-datauserupdate="<?= $this->session->flashdata('message'); ?>"></div>
 
-                <form action="" method="post" class="setting_form">
+                <form action="" method="post" class="setting_form" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="information_module">
@@ -139,7 +139,7 @@
                                             </div>
                                         </div>
                                         <!-- end /.social__single -->
-                                        
+
                                         <div class="social__single">
                                             <div class="social_icon">
                                                 <span class="fa fa-instagram"></span>
@@ -186,7 +186,7 @@
             <!-- end /.container -->
         </div>
         <!-- end /.dashboard_menu_area -->
-    </section>
-    <!--================================
+        </section>
+        <!--================================
             END DASHBOARD AREA
     =================================-->

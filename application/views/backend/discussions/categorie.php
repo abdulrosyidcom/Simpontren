@@ -3,17 +3,18 @@
 <div class="right_col" role="main">
     <!-- top tiles -->
 
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#categoryModal">Tambah Data Kategori</button>
+    <button type="button" class="btn btn-dark buttonCreateCategorieDiscussion" data-toggle="modal" data-target="#categoryModal">Tambah Data Kategori</button>
 
     <div class="row tile_count">
         <div class="col-md-7 col-sm-12 col-xs-12">
 
             <?= form_error('name', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+
             <?= $this->session->flashdata('message'); ?>
 
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Category</h2>
+                    <h2>Categorie Discussion</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
                             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -70,10 +71,10 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="last">
-                                    <button class="btn btn-info buttonUpdateCategoryArticle" data-toggle="modal" data-target="#categoryModal"">
+                                    <button class="btn btn-info buttonUpdateCategorieDiscussion" data-id="<?= $categorie['id']; ?>" data-toggle="modal" data-target="#categoryModal">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>
-                                    <a href="<?= base_url('dashboard/deletearticlecategory/'); ?>" class="btn btn-danger" onclick="return confirm('Yakin Mau Dihapus Nih ?');">
+                                    <a href="<?= base_url('dashboard/delete_discussion_categorie/') . $categorie['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin Mau Dihapus Nih ?');">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </a>
                                 </td>
@@ -97,11 +98,11 @@
 <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="<?= base_url('dashboard/discussions'); ?>" method="post">
+            <form action="<?= base_url('dashboard/discussion_categorie'); ?>" method="post">
                 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title labelModalCategoryArticle" id="modalLabel">Form Tambah Data Kategori</h4>
+                    <h4 class="modal-title labelModalCategoryArticle" id="modalLabel">Form Tambah Data Kategori Diskusi</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">

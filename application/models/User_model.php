@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class User_model extends CI_Model
 {
@@ -24,9 +24,19 @@ class User_model extends CI_Model
                 'url'   => 'discussions',
                 'icon'  => 'lnr lnr-list',
                 'title' => 'Discussions'
+            ],
+            [
+                'url'   => 'notes',
+                'icon'  => 'lnr lnr-pencil',
+                'title' => 'Notes'
+            ],
+            [
+                'url'   => 'checkout',
+                'icon'  => 'lnr lnr-cart',
+                'title' => 'Checkout'
             ]
         ];
-        
+
         return $data;
     }
 
@@ -34,7 +44,7 @@ class User_model extends CI_Model
     public function updateDataUsers()
     {
         $email = $this->input->post('email');
-        
+
         $data = [
             'name' => $this->input->post('name', true),
             'email' => $this->input->post('email', true),
@@ -44,11 +54,31 @@ class User_model extends CI_Model
             'about' => $this->input->post('about', true),
             'facebook' => $this->input->post('facebook', true),
             'twitter' => $this->input->post('twitter', true),
-            'instagram' => $this->input->post('facebook', true),
+            'instagram' => $this->input->post('instagram', true),
             'website' => $this->input->post('website', true),
         ];
 
         $this->db->where('email', $email);
         $this->db->update('user', $data);
+    }
+
+    public function getEditNotes($id)
+    {
+        return $this->db->get_where('user_notes', ['id' => $id])->row_array();
+    }
+
+    public function updateDataNotes()
+    {
+        $data = [
+            'note' => $this->input->post('note')
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('user_notes', $data);
+    }
+
+    public function getConfirmCheckout($id)
+    {
+        return $this->db->get_where('checkout', ['id' => $id])->row_array();
     }
 }

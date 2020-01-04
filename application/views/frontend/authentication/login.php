@@ -16,7 +16,7 @@
                             <div class="login--form">
 
                                 <?= $this->session->flashdata('message'); ?>
-                                
+
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input id="email" type="text" class="text_field" name="email">

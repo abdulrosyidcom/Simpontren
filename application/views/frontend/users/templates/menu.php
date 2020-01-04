@@ -36,46 +36,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="dashboard_menu">
-                            
-                            <?php foreach ( $menus as $menu ) : ?>
+
+                            <?php foreach ($menus as $menu) : ?>
                                 <?php if ($menu['title'] == $title) : ?>
-                                <li class="active">
-                                    <?php else: ?>
+                                    <li class="active">
+                                    <?php else : ?>
                                     <li class="">
-                                <?php endif; ?>
-                                    <a href="<?= $menu['url']; ?>">
+                                    <?php endif; ?>
+                                    <a href="<?= base_url('user/' . $menu['url']); ?>">
                                         <span class="<?= $menu['icon']; ?>"></span><?= $menu['title']; ?>
                                     </a>
-                                </li>
-                            <?php endforeach; ?>
-                            <!-- <li>
-                                <a href="dashboard-setting.html">
-                                    <span class="lnr lnr-cog"></span>Setting</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-purchase.html">
-                                    <span class="lnr lnr-cart"></span>Purchase</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-add-credit.html">
-                                    <span class="lnr lnr-dice"></span>Add Credits</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-statement.html">
-                                    <span class="lnr lnr-chart-bars"></span>Statements</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-upload.html">
-                                    <span class="lnr lnr-upload"></span>Upload Items</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-manage-item.html">
-                                    <span class="lnr lnr-briefcase"></span>Manage Items</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-withdrawal.html">
-                                    <span class="lnr lnr-briefcase"></span>Withdrawals</a>
-                            </li> -->
+                                    </li>
+                                <?php endforeach; ?>
                         </ul>
                         <!-- end /.dashboard_menu -->
                     </div>

@@ -6,10 +6,17 @@ class Articles extends CI_Controller
     {
         $data['title']     = 'SIMPONTREN | Blog Sistem Informasi Pondok Pesantren';
         $data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->db->order_by('id', 'DESC');
         $data['articles']  = $this->db->get_where('article', ['is_active' => 'active'])->result_array();
+
         $data['categorys'] = $this->db->get('article_category')->result_array();
 
-        if ( $this->input->post('keyword') ) {
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
+        if ($this->input->post('keyword')) {
             $data['articles'] = $this->Articles_model->searchDataArticle();
         }
 
@@ -17,15 +24,21 @@ class Articles extends CI_Controller
         $this->load->view('frontend/articles/index', $data);
         $this->load->view('frontend/templates/footer');
     }
-    
+
     public function category($category)
     {
         $data['title']     = 'SIMPONTREN | Blog Sistem Informasi Pondok Pesantren';
         $data['user']      = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->db->order_by('id', 'DESC');
         $data['articles']  = $this->db->get_where('article', ['category' => $category])->result_array();
         $data['categorys'] = $this->db->get('article_category')->result_array();
 
-        if ( $this->input->post('keyword') ) {
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
+        if ($this->input->post('keyword')) {
             $data['articles'] = $this->Articles_model->searchDataArticle();
         }
 
@@ -33,7 +46,7 @@ class Articles extends CI_Controller
         $this->load->view('frontend/articles/index', $data);
         $this->load->view('frontend/templates/footer');
     }
-    
+
     public function read($url_title)
     {
         $data['article']    = $this->db->get_where('article', ['url_title' => $url_title])->row_array();
@@ -44,6 +57,10 @@ class Articles extends CI_Controller
         $data['articles']   = $this->db->get('article')->result_array();
         $data['categorys']  = $this->db->get('article_category')->result_array();
 
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
         $this->form_validation->set_rules('commentar', 'commentar', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -51,7 +68,7 @@ class Articles extends CI_Controller
             $this->load->view('frontend/articles/read', $data);
             $this->load->view('frontend/templates/footer');
         } else {
-            
+
             $data = [
                 'commentar'    => $this->input->post('commentar', true),
                 'url_title'    => $url_title,
@@ -65,6 +82,4 @@ class Articles extends CI_Controller
             redirect('articles/read/' . $url_title);
         }
     }
-
-
 }

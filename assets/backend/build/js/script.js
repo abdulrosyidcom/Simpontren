@@ -57,9 +57,6 @@ $(function () {
         });
     });
 
-
-
-
     // ARTICLE CATEGORY
 
     $('.buttonInsertCategoryArticle').on('click', function() {
@@ -82,6 +79,84 @@ $(function () {
             success: function (data) {
                 $('#name').val(data.name);
                 $('#is_active').val(data.is_active);
+                $('#id').val(data.id);
+            }
+        });
+    });
+
+
+    // DISCUSSION
+
+    // $('.updateDataNote').on('click', function() {
+    //     $.ajax({
+    //         url: 'http://localhost/simpontren/dashboard/editnote',
+    //         data: {id : id},
+    //         method: 'post',
+    //         dataType: 'json',
+    //         success: function (data) {
+    //             console.log(data);
+    //         }
+    //     });
+    // });
+
+    $('.updateDataDiscussion').on('click', function () {
+
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: 'http://localhost/simpontren/dashboard/editdiscussion',
+            data: {id : id},
+            method: 'post',
+            dataType: 'json',
+            success: function (data) {
+                $('#question').val(data.quession);
+                $('#is_active').val(data.is_active);
+                $('textarea').val(data.description);
+                $('#id').val(data.id);
+            }
+        });
+    });
+
+
+    $('.buttonCreateCategorieDiscussion').on('click', function () {
+        $('.modal-title').html('Tambah Categorie');
+        $('.modal-footer button[type=submit]').html('Simpan');
+    });
+
+    $('.buttonUpdateCategorieDiscussion').on('click', function() {
+        $('.modal-title').html('Update Categorie');
+        $('.modal-footer button[type=submit]').html('Update');
+        $('.modal-content form').attr('action', 'http://localhost/simpontren/dashboard/updateDiscussionCategorie');
+
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: 'http://localhost/simpontren/dashboard/editdiscussioncategory',
+            data: {id : id},
+            method: 'post',
+            dataType: 'json',
+            success: function (data) {
+                $('#name').val(data.name);
+                $('#is_active').val(data.is_active);
+                $('#id').val(data.id);
+            }
+        });
+    });
+
+
+    // feedback
+    $('.buttonUpdateFeedback').on('click', function () {
+
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: 'http://localhost/simpontren/dashboard/editfeedback',
+            data: {id : id},
+            method: 'post',
+            dataType: 'json',
+            success: function (data) {
+                $('#is_active').val(data.is_active);
+                $('textarea').val(data.note);
                 $('#id').val(data.id);
             }
         });

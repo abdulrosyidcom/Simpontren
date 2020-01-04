@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Dashboard_model extends CI_Model
 {
@@ -90,7 +90,7 @@ class Dashboard_model extends CI_Model
     {
         $data = [
             'name' => $this->input->post('name'),
-            'slug' => strtolower( url_title( $this->input->post('name') )),
+            'slug' => strtolower(url_title($this->input->post('name'))),
             'date_created' => time(),
             'is_active' => $this->input->post('is_active')
         ];
@@ -118,7 +118,30 @@ class Dashboard_model extends CI_Model
 
     /*
     |--------------------------------------------------------------------------
-    | Dashboard Category Discussion
+    | Dashboard Discussion
+    |--------------------------------------------------------------------------
+    */
+
+    public function getEditDiscussion($id)
+    {
+        return $this->db->get_where('discussion', ['id' => $id])->row_array();
+    }
+
+    public function updateDiscussion()
+    {
+        $data = [
+            'quession' => $this->input->post('question'),
+            'is_active' => $this->input->post('is_active'),
+            'description' => $this->input->post('description')
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('discussion', $data);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard Discussion Categorie
     |--------------------------------------------------------------------------
     */
 
@@ -126,11 +149,94 @@ class Dashboard_model extends CI_Model
     {
         $data = [
             'name' => $this->input->post('name', true),
-            'slug' => strtolower(url_title( $this->input->post('name', true ))),
+            'slug' => strtolower(url_title($this->input->post('name', true))),
             'date_created' => time(),
             'is_active' => 'aktif'
         ];
 
         $this->db->insert('discussion_categorie', $data);
     }
+
+    public function updateDiscussionCategorie()
+    {
+        $data = [
+            'name' => $this->input->post('name', true),
+            'slug' => strtolower(url_title($this->input->post('name'))),
+            'is_active' => $this->input->post('is_active')
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('discussion_categorie', $data);
+    }
+
+    public function getEditDiscussionCategorie($id)
+    {
+        return $this->db->get_where('discussion_categorie', ['id' => $id])->row_array();
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard Feedback
+    |--------------------------------------------------------------------------
+    */
+
+    public function getEditFeedback($id)
+    {
+        return $this->db->get_where('user_notes', ['id' => $id])->row_array();
+    }
+
+    public function updateFeedback()
+    {
+        $data = [
+            'note' => $this->input->post('note', true),
+            'is_active' => $this->input->post('is_active')
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('user_notes', $data);
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard Product
+    |--------------------------------------------------------------------------
+    */
+
+    public function insertDataProductCategory()
+    {
+        $data = [
+            'name' => $this->input->post('name', true),
+            'slug' => strtolower(url_title($this->input->post('name', true))),
+            'is_active' => $this->input->post('is_active'),
+            'date_created' => time()
+        ];
+
+        $this->db->insert('product_category', $data);
+    }
+
+
+    public function getAllCheckout()
+    {
+        return $this->db->get('checkout')->result_array();
+    }
+
+    // public function takeIdCheckout($id)
+    // {
+    //     $result = $this->db->where('id', $id)
+    //         ->limit(1)
+    //         ->get('checkout');
+
+    //     if ($result->num_rows() > 0) {
+    //         return $result->row();
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    // public function takeIdOrder($id)
+    // {
+    //     return $this->db->get_where('order_product', ['id' => $id])->result_array();
+    // }
 }

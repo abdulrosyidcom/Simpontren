@@ -1,0 +1,39 @@
+.........
+BACKEND
+.........
+Produk
+    - Create
+    - Update
+    - Delete
+
+Kategori Produk :
+    - Update
+    - Delete
+
+Passowrd Reset
+
+.........
+FRONTEND
+.........
+
+User Dashboard
+    - Menjumlahkan semua data user
+        - Produk
+        - Blog
+        - dll
+
+Produk
+    - Update Produk (Kategori belum menyesuaikan)
+
+User menu sidebar
+    - Kurang Produk
+
+404 Belum diubah
+
+
+
+
+
+TERAKHIR :
+
+Details Produk

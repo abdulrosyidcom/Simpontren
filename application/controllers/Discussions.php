@@ -12,14 +12,18 @@ class Discussions extends CI_Controller
         $data['discussions'] = $this->db->get('discussion')->result_array();
 
         $data['answer'] = $this->Discussions_model->totalDataCommentar();
-        
+
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
         $this->load->view('frontend/templates/header', $data);
         $this->load->view('frontend/discussions/templates/menu', $data);
         $this->load->view('frontend/discussions/index');
         $this->load->view('frontend/discussions/templates/component', $data);
         $this->load->view('frontend/templates/footer');
     }
-    
+
     public function unanswered()
     {
         $data['subTitle'] = 'Belum Terjawab';
@@ -29,6 +33,10 @@ class Discussions extends CI_Controller
         $data['menuDiscussions'] = $this->Discussions_model->menuDiscussions();
         $data['discussions'] = $this->db->get_where('discussion', ['status' => 'Not Solved'])->result_array();
         $data['answer'] = $this->Discussions_model->totalDataCommentar();
+
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
 
         $this->load->view('frontend/templates/header', $data);
         $this->load->view('frontend/discussions/templates/menu', $data);
@@ -47,6 +55,9 @@ class Discussions extends CI_Controller
         $data['discussions'] = $this->db->get_where('discussion', ['status' => 'solved'])->result_array();
         $data['answer'] = $this->Discussions_model->totalDataCommentar();
 
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
 
         $this->load->view('frontend/templates/header', $data);
         $this->load->view('frontend/discussions/templates/menu', $data);
@@ -69,6 +80,10 @@ class Discussions extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['categories'] = $this->db->get('discussion_categorie')->result_array();
 
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
         $this->form_validation->set_rules('quession', 'quession', 'required|trim');
         $this->form_validation->set_rules('description', 'description', 'required|trim');
 
@@ -78,7 +93,7 @@ class Discussions extends CI_Controller
             $this->load->view('frontend/discussions/templates/component', $data);
             $this->load->view('frontend/templates/footer');
         } else {
-            
+
             $data = [
                 'author'       => $data['user']['name'],
                 'image'        => $data['user']['image'],
@@ -107,9 +122,13 @@ class Discussions extends CI_Controller
         $data['commentars'] = $this->db->get_where('discussion_commentar', ['url_quession' => $url_quession])->result_array();
         $data['answer'] = $this->db->get_where('discussion_commentar', ['url_quession' => $url_quession])->num_rows();
 
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
         $this->form_validation->set_rules('commentar', 'commentar', 'required|trim');
 
-        if ( $this->form_validation->run() == false) {
+        if ($this->form_validation->run() == false) {
             $this->load->view('frontend/templates/header', $data);
             $this->load->view('frontend/discussions/read', $data);
             $this->load->view('frontend/discussions/templates/component', $data);
@@ -138,6 +157,10 @@ class Discussions extends CI_Controller
         $data['quession'] = $this->db->get_where('discussion', ['id' => $id])->row_array();
         $data['categories'] = $this->db->get('discussion_categorie')->result_array();
 
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
+
         $this->form_validation->set_rules('quession', 'quession', 'required|trim');
         $this->form_validation->set_rules('description', 'description', 'required|trim');
 
@@ -152,7 +175,6 @@ class Discussions extends CI_Controller
 
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Diubah</div>');
             redirect('user/discussions');
-
         }
     }
 
@@ -164,27 +186,25 @@ class Discussions extends CI_Controller
     }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Discussion CRUD
-    |--------------------------------------------------------------------------
-    */
+    public function categorie($slug)
+    {
+        $data['discussions'] = $this->db->get_where('discussion', ['categorie' => $slug])->result_array();
+        $data['subTitle'] = $slug;
+        $data['title'] = 'Discussion categorie ' . $data['subTitle'];
 
-    // public function categorie($categorie)
-    // {
-    //     $data['subTitle'] = $categorie;
-    //     $data['discussions'] = $this->db->get_where('discussion', ['categorie' => $categorie])->result_array();
-    //     $data['title'] = 'Discussions Categorie ' . $data['subTitle'];
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-    //     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-    //     $data['menuDiscussions'] = $this->Discussions_model->menuDiscussions();
-    //     $data['answer'] = $this->Discussions_model->totalDataCommentar();
+        $data['answer'] = $this->Discussions_model->totalDataCommentar();
+        $data['menuDiscussions'] = $this->Discussions_model->menuDiscussions();
 
-    //     $this->load->view('frontend/templates/header', $data);
-    //     $this->load->view('frontend/discussions/templates/menu', $data);
-    //     $this->load->view('frontend/discussions/index');
-    //     $this->load->view('frontend/discussions/templates/component', $data);
-    //     $this->load->view('frontend/templates/footer');
-    // }
+        // cart Products
+        $data['carts'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->result_array();
+        $data['totalCart'] = $this->db->get_where('cart', ['session_email' => $data['user']['email']])->num_rows();
 
+        $this->load->view('frontend/templates/header', $data);
+        $this->load->view('frontend/discussions/templates/menu', $data);
+        $this->load->view('frontend/discussions/index');
+        $this->load->view('frontend/discussions/templates/component', $data);
+        $this->load->view('frontend/templates/footer');
+    }
 }

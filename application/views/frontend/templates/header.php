@@ -10,7 +10,6 @@
     <meta name="description" content="MartPlace - Complete Online Multipurpose Marketplace HTML Template">
     <meta name="keywords" content="marketplace, easy digital download, digital product, digital, html5">
 
-
     <title><?= $title; ?></title>
 
     <!-- inject:css -->
@@ -19,7 +18,7 @@
 
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    
+
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- endinject -->
@@ -55,130 +54,133 @@
 
                         <?php if ($this->session->userdata('email')) : ?>
 
-                        <div class="author-area">
+                            <div class="author-area">
 
-                            <div class="author__notification_area">
-                                <ul>
-                                    <li class="has_dropdown">
-                                        <div class="icon_wrap">
-                                            <span class="lnr lnr-cart"></span>
-                                            <span class="notification_count purch">2</span>
-                                        </div>
+                                <div class="author__notification_area">
+                                    <ul>
+                                        <li class="has_dropdown">
+                                            <div class="icon_wrap">
+                                                <span class="lnr lnr-cart"></span>
+                                                <span class="notification_count"><?= anchor('cart/', $this->cart->total_items()); ?></span>
+                                            </div>
 
-                                        <div class="dropdowns dropdown--cart">
-                                            <div class="cart_area">
-                                                <div class="cart_product">
-                                                    <div class="product__info">
-                                                        <div class="thumbn">
-                                                            <img src="<?= base_url('assets/frontend/'); ?>images/capro1.jpg" alt="cart product thumbnail">
-                                                        </div>
+                                            <div class="dropdowns dropdown--cart">
+                                                <div class="cart_area">
+                                                    <!-- <div class="cart_product">
+                                                        <div class="product__info">
+                                                            <div class="thumbn">
+                                                                <img src="" alt="cart product thumbnail">
+                                                            </div>
 
-                                                        <div class="info">
-                                                            <a class="title" href="single-product.html">Finance and Consulting Business Theme</a>
-                                                            <div class="cat">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url('assets/frontend/'); ?>images/catword.png" alt="">Wordpress</a>
+                                                            <div class="info">
+                                                                <a class="title" href="single-product.html">Name</a>
+                                                                <div class="cat">
+                                                                    <span class="lnr lnr-book">as</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="product__action">
-                                                        <a href="#">
-                                                            <span class="lnr lnr-trash"></span>
-                                                        </a>
-                                                        <p>$60</p>
-                                                    </div>
-                                                </div>
-                                                <div class="cart_product">
-                                                    <div class="product__info">
-                                                        <div class="thumbn">
-                                                            <img src="<?= base_url('assets/frontend/'); ?>images/capro2.jpg" alt="cart product thumbnail">
-                                                        </div>
-
-                                                        <div class="info">
-                                                            <a class="title" href="single-product.html">Flounce - Multipurpose OpenCart Theme</a>
-                                                            <div class="cat">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url('assets/frontend/'); ?>images/catword.png" alt="">Wordpress</a>
-                                                            </div>
+                                                        <div class="product__action">
+                                                            <a href="">
+                                                                <span class="lnr lnr-trash"></span>
+                                                            </a>
+                                                            <p>Total</p>
                                                         </div>
                                                     </div>
 
-                                                    <div class="product__action">
-                                                        <a href="#">
-                                                            <span class="lnr lnr-trash"></span>
-                                                        </a>
-                                                        <p>$60</p>
+                                                    <div class="total">
+                                                        <p>
+                                                            <span>Total :</span>10</p>
+                                                    </div> -->
+                                                    <div class="cart_action">
+                                                        <a class="go_cart" href="<?= base_url('cart'); ?>">View Cart</a>
+                                                        <a class="go_checkout" href="<?= base_url('checkout'); ?>">Checkout</a>
                                                     </div>
-                                                </div>
-                                                <div class="total">
-                                                    <p>
-                                                        <span>Total :</span>$80</p>
-                                                </div>
-                                                <div class="cart_action">
-                                                    <a class="go_cart" href="cart.html">View Cart</a>
-                                                    <a class="go_checkout" href="checkout.html">Checkout</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="author-author__info inline has_dropdown">
-                                <div class="author__avatar">
-                                    <img width="50" class="rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="user avatar">
-
-                                </div>
-                                <div class="autor__info">
-                                    <p class="name">
-                                        <?= $user['name']; ?>
-                                    </p>
-                                    <p class="ammount"><?=  date('d M Y', $user['date_created']); ?></p>
-                                </div>
-
-                                <div class="dropdowns dropdown--author">
-                                    <ul>
-                                        <li>
-                                            <a href="<?= base_url('user'); ?>">
-                                                <span class="lnr lnr-user"></span>Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url('user/dashboard'); ?>">
-                                                <span class="lnr lnr-home"></span>Dashboard
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url('authentication/logout'); ?>">
-                                                <span class="lnr lnr-exit"></span>Logout
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="mobile_content ">
-                            <span class="lnr lnr-user menu_icon"></span>
-
-                            <div class="offcanvas-menu closed">
-                                <span class="lnr lnr-cross close_menu"></span>
-                                <div class="author-author__info">
-                                    <div class="author__avatar v_middle">
+                                <div class="author-author__info inline has_dropdown">
+                                    <div class="author__avatar">
                                         <img width="50" class="rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="user avatar">
+
                                     </div>
-                                    <div class="autor__info v_middle">
+                                    <div class="autor__info">
                                         <p class="name">
                                             <?= $user['name']; ?>
                                         </p>
                                         <p class="ammount"><?= date('d M Y', $user['date_created']); ?></p>
                                     </div>
-                                </div>
 
-                                <div class="author__notification_area">
-                                    <ul>
-                                        <li>
+                                    <div class="dropdowns dropdown--author">
+                                        <ul>
+                                            <li>
+                                                <a href="<?= base_url('user'); ?>">
+                                                    <span class="lnr lnr-user"></span>Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/dashboard'); ?>">
+                                                    <span class="lnr lnr-home"></span>Dashboard
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/setting'); ?>">
+                                                    <span class="lnr lnr-cog"></span>Setting
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/article'); ?>">
+                                                    <span class="lnr lnr-pencil"></span>Article
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/discussions'); ?>">
+                                                    <span class="lnr lnr-list"></span>Discussions
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/notes'); ?>">
+                                                    <span class="lnr lnr-pencil"></span>Notes
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/checkout'); ?>">
+                                                    <span class="lnr lnr-cart"></span>Checkout
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('authentication/logout'); ?>">
+                                                    <span class="lnr lnr-exit"></span>Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mobile_content ">
+                                <span class="lnr lnr-user menu_icon"></span>
+
+                                <div class="offcanvas-menu closed">
+                                    <span class="lnr lnr-cross close_menu"></span>
+                                    <div class="author-author__info">
+                                        <div class="author__avatar v_middle">
+                                            <img width="50" class="rounded-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="user avatar">
+                                        </div>
+                                        <div class="autor__info v_middle">
+                                            <p class="name">
+                                                <?= $user['name']; ?>
+                                            </p>
+                                            <p class="ammount"><?= date('d M Y', $user['date_created']); ?></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="author__notification_area">
+                                        <ul>
+                                            <!-- <li>
                                             <a href="notification.html">
                                                 <div class="icon_wrap">
                                                     <span class="lnr lnr-alarm"></span>
@@ -194,45 +196,66 @@
                                                     <span class="notification_count msg">6</span>
                                                 </div>
                                             </a>
-                                        </li>
+                                        </li> -->
 
-                                        <li>
-                                            <a href="cart.html">
-                                                <div class="icon_wrap">
-                                                    <span class="lnr lnr-cart"></span>
-                                                    <span class="notification_count purch">2</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            <li>
+                                                <a href="cart.html">
+                                                    <div class="icon_wrap">
+                                                        <span class="lnr lnr-cart"></span>
+                                                        <span class="notification_count purch">2</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                <div class="dropdowns dropdown--author">
-                                    <ul>
-                                        <li>
-                                            <a href="author.html">
-                                                <span class="lnr lnr-user"></span>Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="<?= base_url('authentication/logout'); ?>">
-                                                <span class="lnr lnr-exit"></span>Logout</a>
-                                        </li>
-                                    </ul>
+                                    <div class="dropdowns dropdown--author">
+                                        <ul>
+                                            <li>
+                                                <a href="<?= base_url('user'); ?>">
+                                                    <span class="lnr lnr-user"></span>Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/dashboard'); ?>">
+                                                    <span class="lnr lnr-home"></span>Dashboard</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/setting'); ?>">
+                                                    <span class="lnr lnr-cog"></span>Setting</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/article'); ?>">
+                                                    <span class="lnr lnr-pencil"></span>Article</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/discussions'); ?>">
+                                                    <span class="lnr lnr-list"></span>Discussions</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('user/notes'); ?>">
+                                                    <span class="lnr lnr-pencil"></span>Notes</a>
+                                            </li>
+                                            <li>
+                                                <a href="<?= base_url('authentication/logout'); ?>">
+                                                    <span class="lnr lnr-exit"></span>Logout</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php else: ?>
-                        
-                        <!-- start .author-area -->
-                        <div class="author-area not_logged_in">
-                            <div class="pull-right join">
-                                <a href="<?= base_url('authentication/registration'); ?>" class="btn btn--round btn-secondary  btn--xs">Registration</a>
-                                <a href="<?= base_url('authentication'); ?>" class="btn btn--round btn--xs">Login</a>
+                        <?php else : ?>
+
+                            <!-- start .author-area -->
+                            <div class="author-area not_logged_in">
+                                <div class="pull-right join">
+                                    <a href="<?= base_url('authentication/registration'); ?>" class="btn btn--round btn-secondary  btn--xs">Registration</a>
+                                    <a href="<?= base_url('authentication'); ?>" class="btn btn--round btn--xs">Login</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end .author-area -->
+                            <!-- end .author-area -->
 
                         <?php endif; ?>
+
                     </div>
 
                 </div>
@@ -267,8 +290,7 @@
                         </div>
 
                         <nav class="navbar navbar-expand-md navbar-light mainmenu__menu">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -285,6 +307,14 @@
 
                                     <li class="has_dropdown">
                                         <a href="<?= base_url('discussions'); ?>">Discussion</a>
+                                    </li>
+
+                                    <li class="has_dropdown">
+                                        <a href="<?= base_url('products'); ?>">Product</a>
+                                    </li>
+
+                                    <li class="has_dropdown">
+                                        <a href="<?= base_url('about'); ?>">About</a>
                                     </li>
                                 </ul>
                             </div>

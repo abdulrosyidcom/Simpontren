@@ -1,3 +1,4 @@
+
     <!--================================
         START BREADCRUMB AREA
     =================================-->
@@ -52,18 +53,18 @@
                                 <div class="social social--color--filled">
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= $user['facebook']; ?>">
                                                 <span class="fa fa-facebook"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= $user['twitter']; ?>">
                                                 <span class="fa fa-twitter"></span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <span class="fa fa-dribbble"></span>
+                                            <a href="<?= $user['instagram']; ?>">
+                                                <span class="fa fa-instagram"></span>
                                             </a>
                                         </li>
                                     </ul>
@@ -80,7 +81,7 @@
                         <div class="sidebar-card author-menu">
                             <ul>
                                 <li>
-                                    <a href="#" class="active">Profile</a>
+                                    <a href="<?= base_url('user/dashboard'); ?>" class="active">Dashboard</a>
                                 </li>
                             </ul>
                         </div>
@@ -140,12 +141,7 @@
                                 <h2>About
                                     <span><?= $user['name']; ?></span>
                                 </h2>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo
-                                    quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo
-                                    ut scelerisque the mattisleo quam aliquet congue. Nunc placerat mi id nisi interdum mollis.
-                                    Prae sent pharetra, justo ut scelerisque the mattisleo quam aliquet congue.</p>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo
-                                    quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Praesent pharetra.</p>
+                                <p><?= $user['about']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -165,19 +161,15 @@
                         <!-- end /.col-md-12 -->
 
                         <!-- start .col-md-4 -->
-                        <div class="col-lg-6 col-md-6">
-                            <!-- start .single-product -->
+                        <!-- <div class="col-lg-6 col-md-6">
                             <div class="product product--card">
-
                                 <div class="product__thumbnail">
                                     <img src="images/p4.jpg" alt="Product Image">
                                     <div class="prod_btn">
                                         <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
                                         <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
                                     </div>
-                                    <!-- end /.prod_btn -->
                                 </div>
-                                <!-- end /.product__thumbnail -->
 
                                 <div class="product-desc">
                                     <a href="#" class="product_title">
@@ -199,7 +191,6 @@
                                     <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the
                                         mattis, leo quam aliquet congue.</p>
                                 </div>
-                                <!-- end /.product-desc -->
 
                                 <div class="product-purchase">
                                     <div class="price_love">
@@ -235,15 +226,10 @@
                                         </p>
                                     </div>
                                 </div>
-                                <!-- end /.product-purchase -->
                             </div>
-                            <!-- end /.single-product -->
-                        </div>
-                        <!-- end /.col-md-4 -->
+                        </div> -->
                     </div>
-                    <!-- end /.row -->
                 </div>
-                <!-- end /.col-md-8 -->
 
             </div>
             <!-- end /.row -->

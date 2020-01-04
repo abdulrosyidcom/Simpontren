@@ -64,7 +64,6 @@
                         </div>
                         <!-- end .forum_issue -->
 
-
                         <div class="forum--replays cardify">
                             <div class="area_title">
                                 <h4><?= $answer; ?> Jawaban</h4>
@@ -108,24 +107,29 @@
                         
                             <div class="comment-form-area">
                                 <?= $this->session->flashdata('message'); ?>
-                                <h4>Tinggalkan Jawaban</h4>
                                 <!-- comment reply -->
-                                <div class="media comment-form support__comment">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="rounded-circle" width="70" class="media-object" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="Commentator Avatar">
-                                        </a>
+                                <?php if ($this->session->userdata('email')) : ?>
+                                <h4>Tinggalkan Jawaban</h4>
+                                    <div class="media comment-form support__comment">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="rounded-circle" width="70" class="media-object" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="Commentator Avatar">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <form action="" method="post" class="comment-reply-form">
+                                                <textarea name="commentar" class="ckeditor" id="ckeditor" cols="30" rows="10"></textarea>
+                                                <?= form_error('commentar', '<span class="text-danger">', '</span>'); ?>
+                                                <br>
+                                                <button type="submit" class="btn btn--sm btn--round">Kirim Jawaban</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <form action="" method="post" class="comment-reply-form">
-                                            <!-- <div id="trumbowyg-demo"></div> -->
-                                            <textarea name="commentar" class="ckeditor" id="ckeditor" cols="30" rows="10"></textarea>
-                                            <?= form_error('commentar', '<span class="text-danger">', '</span>'); ?>
-                                            <br>
-                                            <button type="submit" class="btn btn--sm btn--round">Kirim Jawaban</button>
-                                        </form>
+                                <?php else : ?>
+                                    <div class="alert alert-warning">
+                                        Maaf, Untuk menjawab pertanyaan ini anda harus login terlebih dahulu
                                     </div>
-                                </div>
+                                <?php endif; ?>
                                 <!-- comment reply -->
                             </div>
                         </div>
